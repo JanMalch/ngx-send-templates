@@ -121,6 +121,46 @@
           }
         }
       }
+    },
+    "ngx-send-templates": {
+      "root": "projects/ngx-send-templates",
+      "sourceRoot": "projects/ngx-send-templates/src",
+      "projectType": "library",
+      "prefix": "ngst",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-send-templates/tsconfig.lib.json",
+            "project": "projects/ngx-send-templates/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/ngx-send-templates/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-send-templates/src/test.ts",
+            "tsConfig": "projects/ngx-send-templates/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-send-templates/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-send-templates/tsconfig.lib.json",
+              "projects/ngx-send-templates/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ngx-send-templates-app"

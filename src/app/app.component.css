@@ -1,0 +1,28 @@
+
+div {
+  border-radius: 3px;
+  background: #fafafa;
+  padding: 24px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+  margin: 32px 0;
+}
+
+h2 {
+  border-bottom: 1px solid #eee;
+  padding: 0 24px 12px;
+  margin: -8px -24px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h2 > a {
+  text-decoration: none;
+  background: #039be5;
+  font-size: 16px;
+  color: white;
+  font-weight: 400;
+  padding: 6px 12px;
+  border-radius: 3px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+}
