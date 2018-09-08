@@ -1,27 +1,68 @@
-# NgxSendTemplatesApp
+[![npm version](https://badge.fury.io/js/ngx-send-templates.svg)](https://badge.fury.io/js/ngx-send-templates) 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
+# ngx-send-templates
 
-## Development server
+Small Angular library to easily send templates to different locations.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Installation
 
-## Code scaffolding
+Install via `npm install ngx-send-templats --save` and import `NgxSendTemplatesModule` in your AppModule.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Usage
 
-## Build
+You can now use the directives `*sendTemplate` and `*receiveTemplate` or manually use the `SendTemplatesService`.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+### Sending a template
 
-## Running unit tests
+```angular2html
+<div *sendTemplate>Send this to the default location</div>
+<div *sendTemplate="'leftNav'">Send this div to the left nav!</div>
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Receive a template
 
-## Running end-to-end tests
+```angular2html
+<ng-container *receiveTemplate></ng-container> <!-- uses default stream -->
+<p *receiveTemplate="'leftNav'">This is a placeholder while there is no template!</p>
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+> Templates are sent via `BehaviourSubjects` so you will always receive the latest template.
 
-## Further help
+## Manage Timings
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## `*sendTemplate`
+
+The `*sendTemplate` directive takes an observable as input with `sendOn`. Every time the observable emits, the template wil be sent.
+
+Furthermore you can apply a `pipe` to change the observable behaviour.
+
+```angular2html
+<div *sendTemplate="'leftNav'; sendOn: button$; pipe: delayBy(5000)">This will be sent 5s after the button was clicked.</div>
+<button (click)="button$.next()">Send Template</button>
+```
+
+```typescript
+button$ = new Subject<void>();
+
+delayBy = (by: number) => (source$) => source$.pipe(
+  delay(by)
+);
+```
+
+## `*receiveTemplate`
+
+The `*sendTemplate` directive also takes a `pipe` input, to change the behaviour on the receiving end.
+
+```angular2html
+<div *receiveTemplate="'confirm'; pipe: confirmTemplate">Placeholder ...</div>
+```
+
+```typescript
+confirmTemplate = (source$) => source$.pipe(
+  map(val => confirm("Do you really want to show this?") ? val : undefined)
+)
+```
+
+## Examples
+
+Check out the [docs](https://https://janmalch.github.io/ngx-send-templates/) for use cases and code examples.
