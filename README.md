@@ -6,7 +6,7 @@ Small Angular library to easily send templates to different locations.
 
 ## Installation
 
-Install via `npm install ngx-send-templats --save` and import `NgxSendTemplatesModule` in your AppModule.
+Install via `npm install ngx-send-templates --save` and import `NgxSendTemplatesModule` in your AppModule.
 
 ## Usage
 
@@ -14,14 +14,14 @@ You can now use the directives `*sendTemplate` and `*receiveTemplate` or manuall
 
 ### Sending a template
 
-```angular2html
+```html
 <div *sendTemplate>Send this to the default location</div>
 <div *sendTemplate="'leftNav'">Send this div to the left nav!</div>
 ```
 
 ### Receive a template
 
-```angular2html
+```html
 <ng-container *receiveTemplate></ng-container> <!-- uses default stream -->
 <p *receiveTemplate="'leftNav'">This is a placeholder while there is no template!</p>
 ```
@@ -36,7 +36,7 @@ The `*sendTemplate` directive takes an observable as input with `sendOn`. Every 
 
 Furthermore you can apply a `pipe` to change the observable behaviour.
 
-```angular2html
+```html
 <div *sendTemplate="'leftNav'; sendOn: button$; pipe: delayBy(5000)">This will be sent 5s after the button was clicked.</div>
 <button (click)="button$.next()">Send Template</button>
 ```
@@ -53,7 +53,7 @@ delayBy = (by: number) => (source$) => source$.pipe(
 
 The `*sendTemplate` directive also takes a `pipe` input, to change the behaviour on the receiving end.
 
-```angular2html
+```html
 <div *receiveTemplate="'confirm'; pipe: confirmTemplate">Placeholder ...</div>
 ```
 
