@@ -65,4 +65,4 @@ confirmTemplate = (source$) => source$.pipe(
 
 ## Examples
 
-Check out the [docs](https://https://janmalch.github.io/ngx-send-templates/) for use cases and code examples.
+Check out the [docs](https://janmalch.github.io/ngx-send-templates/) for use cases and code examples.
