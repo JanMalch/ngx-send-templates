@@ -1,8 +1,23 @@
 {
   "name": "ngx-send-templates",
-  "version": "0.0.1",
+  "version": "0.1.0",
+  "description": "Small Angular library to easily send templates to different locations.",
   "peerDependencies": {
     "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
     "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JanMalch/ngx-send-templates.git"
+  },
+  "keywords": [
+    "Angular",
+    "TypeScript",
+    "Utility"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JanMalch/ngx-send-templates/issues"
+  },
+  "homepage": "https://janmalch.github.io/ngx-send-templates/"
 }
