@@ -3,13 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {NgxSendTemplatesModule} from 'ngx-send-templates';
-import { BasicsComponent } from './basics/basics.component';
-import { ObservablesComponent } from './observables/observables.component';
-import { PipingComponent } from './piping/piping.component';
-import { StepperComponent } from './stepper/stepper.component';
-import { ButtonsComponent } from './buttons/buttons.component';
-import { LateInitComponent } from './late-init/late-init.component';
-import { ConfirmComponent } from './confirm/confirm.component';
+import { BasicsComponent } from './examples/basics.component';
+import { ObservablesComponent } from './examples/observables.component';
+import { PipingComponent } from './examples/piping.component';
+import { StepperComponent } from './examples/stepper.component';
+import { ButtonsComponent } from './examples/buttons.component';
+import { LateInitComponent } from './examples/late-init.component';
+import { ConfirmComponent } from './examples/confirm.component';
 
 @NgModule({
   declarations: [

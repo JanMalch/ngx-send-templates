@@ -7,5 +7,5 @@ import {Component} from '@angular/core';
 })
 export class AppComponent {
   urlFor = (component: string) =>
-    `https://github.com/JanMalch/ngx-send-templates/blob/master/src/app/${component}/${component}.component.html`
+    `https://github.com/JanMalch/ngx-send-templates/blob/master/src/app/examples/${component}.component.ts`
 }
