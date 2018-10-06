@@ -8,8 +8,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build-lib": "ng build ngx-send-templates --prod",
-    "build-n-serve": "npm run build-lib && ng serve"
+    "build:lib": "ng build ngx-send-templates --prod",
+    "serve:local:open": "ng serve --base-href=/ --open",
+    "build:lib:serve:local:open": "npm run build:lib && npm run serve:local:open"
   },
   "private": true,
   "dependencies": {
