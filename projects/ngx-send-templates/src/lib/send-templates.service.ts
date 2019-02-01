@@ -7,7 +7,9 @@ import {filter} from 'rxjs/operators';
 })
 export class SendTemplatesService {
   private readonly streams = new Map<any, BehaviorSubject<TemplateRef<any>>>(
-    [[defaultTemplateStream, new BehaviorSubject<TemplateRef<any>>(undefined)]]
+    [
+      [defaultTemplateStream, new BehaviorSubject<TemplateRef<any>>(undefined)]
+    ]
   );
 
   private ensureStream(name: any): BehaviorSubject<TemplateRef<any>> {
@@ -24,9 +26,11 @@ export class SendTemplatesService {
   }
 
   next(template: TemplateRef<any>, stream: any = defaultTemplateStream) {
-    if (stream === null) { stream = defaultTemplateStream; } // Angular uses null for missing directive inputs
+    if (stream === null) {
+      stream = defaultTemplateStream;
+    } // Angular uses null for missing directive inputs
     this.ensureStream(stream).next(template);
   }
 }
 
-export const defaultTemplateStream = "Default Template Stream";
+export const defaultTemplateStream = 'default';

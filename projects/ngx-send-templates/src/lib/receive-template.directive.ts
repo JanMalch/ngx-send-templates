@@ -7,8 +7,8 @@ import { OperatorFunction, Subscription } from 'rxjs';
 })
 export class ReceiveTemplateDirective implements OnInit, OnDestroy {
 
-  @Input() receiveTemplate: any;
-  @Input("receiveTemplatePipe") pipe: OperatorFunction<TemplateRef<any>, TemplateRef<any>>; // tslint:disable-line:no-input-rename
+  @Input("receiveTemplate") source: any; // tslint:disable-line:no-input-rename
+  @Input("receiveTemplateDo") pipe: OperatorFunction<TemplateRef<any>, TemplateRef<any>>; // tslint:disable-line:no-input-rename
 
   private subscription: Subscription;
 
@@ -18,7 +18,7 @@ export class ReceiveTemplateDirective implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.vcr.createEmbeddedView(this.templateRef);
-    const stream = this.receiveTemplate === null ? undefined : this.receiveTemplate;
+    const stream = this.source === null ? undefined : this.source;
 
     const observable = !!this.pipe ?
       this.templates.getTemplate(stream).pipe(this.pipe) :

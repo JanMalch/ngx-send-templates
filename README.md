@@ -19,6 +19,9 @@ You can now use the directives `*sendTemplate` and `*receiveTemplate` or manuall
 <div *sendTemplate="'leftNav'">Send this div to the left nav!</div>
 ```
 
+>`ngx-send-templates` uses `'default'` as the key for the default stream. So the following are equal:
+>`<div *sendTemplate>`, `<div *sendTemplate="'default'">`, `<div *sendTemplate="undefined">`, `<div *sendTemplate="null">`
+
 ### Receive a template
 
 ```html
@@ -32,12 +35,12 @@ You can now use the directives `*sendTemplate` and `*receiveTemplate` or manuall
 
 ## `*sendTemplate`
 
-The `*sendTemplate` directive takes an observable as input with `sendOn`. Every time the observable emits, the template wil be sent.
+The `*sendTemplate` directive takes an observable as input with `on`. Every time the observable emits, the template wil be sent.
 
-Furthermore you can apply a `pipe` to change the observable behaviour.
+Furthermore you can apply a `pipe`-operator with the `do` input to change the observable behaviour.
 
 ```html
-<div *sendTemplate="'leftNav'; sendOn: button$; pipe: delayBy(5000)">This will be sent 5s after the button was clicked.</div>
+<div *sendTemplate="'leftNav' on button$ do delayBy(5000)">This will be sent 5s after the button was clicked.</div>
 <button (click)="button$.next()">Send Template</button>
 ```
 
@@ -51,18 +54,26 @@ delayBy = (by: number) => (source$) => source$.pipe(
 
 ## `*receiveTemplate`
 
-The `*receiveTemplate` directive also takes a `pipe` input, to change the behaviour on the receiving end.
+The `*receiveTemplate` directive also takes a `pipe`-operator with `do` input, to change the behaviour on the receiving end.
 
 ```html
-<div *receiveTemplate="'confirm'; pipe: confirmTemplate">Placeholder ...</div>
+<div *receiveTemplate="'confirm' do confirmTemplate">Placeholder ...</div>
 ```
 
 ```typescript
 confirmTemplate = (source$) => source$.pipe(
-  map(val => confirm("Do you really want to show this?") ? val : undefined)
+  filter(val => confirm("Do you really want to show this?"))
 )
 ```
 
 ## Examples
 
 Check out the [docs](https://janmalch.github.io/ngx-send-templates/) for use cases and code examples.
+
+* Different template sources
+* Timer observables
+* Side effects
+* Benefit of BehaviourSubjects (e.g. in `*ngIf`)
+* Stepper
+* After (multiple) Button clicks
+* Confirm receiving the template

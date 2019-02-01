@@ -5,8 +5,8 @@ import {skip} from 'rxjs/operators';
 @Component({
   selector: 'app-buttons',
   template: `
-    <div *sendTemplate="'button'; sendOn: button$">This was sent by a button click!</div>
-    <div *sendTemplate="'buttonMulti'; sendOn: buttonMulti$">This was sent after multiple button clicks!</div>
+    <div *sendTemplate="'button' on button$">This was sent by a button click!</div>
+    <div *sendTemplate="'buttonMulti' on buttonMulti$">This was received after multiple button clicks!</div>
 
     <h5>Clicking once</h5>
     <button (click)="sendButton()">Click Once</button>
@@ -14,7 +14,7 @@ import {skip} from 'rxjs/operators';
 
     <h5>Clicking multiple times</h5>
     <button (click)="sendButtonMulti()">Click multiple times</button>
-    <div *receiveTemplate="'buttonMulti'; pipe: skipTimes(3)">Waiting for 3 button clicks ...</div>
+    <div *receiveTemplate="'buttonMulti' do skipTimes(3)">Waiting for 3 button clicks ...</div>
   `
 })
 export class ButtonsComponent  {

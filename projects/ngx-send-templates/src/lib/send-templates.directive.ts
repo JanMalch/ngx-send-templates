@@ -7,9 +7,9 @@ import {Directive, Input, OnDestroy, OnInit, TemplateRef} from '@angular/core';
 })
 export class SendTemplatesDirective implements OnInit, OnDestroy {
 
-  @Input() sendTemplate: any;
-  @Input("sendTemplateSendOn") sendOn: Observable<any>; // tslint:disable-line:no-input-rename
-  @Input("sendTemplatePipe") pipe: OperatorFunction<any, any>; // tslint:disable-line:no-input-rename
+ @Input("sendTemplate") destination: any; // tslint:disable-line:no-input-rename
+  @Input("sendTemplateOn") sendOn: Observable<any>; // tslint:disable-line:no-input-rename
+  @Input("sendTemplateDo") pipe: OperatorFunction<any, any>; // tslint:disable-line:no-input-rename
 
   private subscription: Subscription;
 
@@ -18,13 +18,13 @@ export class SendTemplatesDirective implements OnInit, OnDestroy {
 
   ngOnInit() {
     if (!this.sendOn) {
-      this.service.next(this.templateRef, this.sendTemplate);
+      this.service.next(this.templateRef, this.destination);
     } else {
       const observable = !!this.pipe ?
         this.sendOn.pipe(this.pipe) :
         this.sendOn;
 
-      this.subscription = observable.subscribe(() => this.service.next(this.templateRef, this.sendTemplate));
+      this.subscription = observable.subscribe(() => this.service.next(this.templateRef, this.destination));
     }
   }
 
