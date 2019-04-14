@@ -7,7 +7,7 @@ import {Directive, Input, OnDestroy, OnInit, TemplateRef} from '@angular/core';
 })
 export class SendTemplatesDirective implements OnInit, OnDestroy {
 
- @Input("sendTemplate") destination: any; // tslint:disable-line:no-input-rename
+  @Input("sendTemplate") destination: any; // tslint:disable-line:no-input-rename
   @Input("sendTemplateOn") sendOn: Observable<any>; // tslint:disable-line:no-input-rename
   @Input("sendTemplateDo") pipe: OperatorFunction<any, any>; // tslint:disable-line:no-input-rename
 
@@ -29,6 +29,8 @@ export class SendTemplatesDirective implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    if (!!this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }
