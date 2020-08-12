@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/JanMalch/ngx-send-templates/issues"
   },
-  "homepage": "https://janmalch.github.io/ngx-send-templates/"
+  "homepage": "https://janmalch.github.io/ngx-send-templates/",
+  "dependencies": {
+    "tslib": "^2.0.0"
+  }
 }
