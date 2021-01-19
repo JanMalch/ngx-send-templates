@@ -2,7 +2,7 @@
 
 # ngx-send-templates
 
-Small Angular library to easily send templates to different locations.
+Small Angular library to easily send templates to different locations. Based on the [Advanced Angular Concepts talk by Alex Rickabaugh](https://youtu.be/rKbY1t39dHU).
 
 ## Installation
 
