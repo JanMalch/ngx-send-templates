@@ -1,6 +1,6 @@
 # :warning: DEPRECATED :warning:
 
-**I recommend you use [`@angular/cdk/portal`](https://material.angular.io/cdk/portal) and create your own service.**
+**I recommend you use [`@angular/cdk/portal`](https://material.angular.io/cdk/portal) and create your own [service](https://github.com/JanMalch/ngx-send-templates/blob/master/projects/ngx-send-templates/src/lib/send-templates.service.ts).**
 
 ---
 
