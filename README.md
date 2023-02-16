@@ -1,3 +1,9 @@
+# :warning: DEPRECATED :warning:
+
+**I recommend you use [`@angular/cdk/portal`](https://material.angular.io/cdk/portal) and create your own service.**
+
+---
+
 [![npm version](https://badge.fury.io/js/ngx-send-templates.svg)](https://badge.fury.io/js/ngx-send-templates) 
 
 # ngx-send-templates
